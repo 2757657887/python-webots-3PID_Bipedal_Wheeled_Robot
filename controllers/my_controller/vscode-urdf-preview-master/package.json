@@ -1,0 +1,80 @@
+{
+    "name": "urdf-preview",
+    "displayName": "URDF Preview",
+    "description": "Extension for previewing URDF files",
+    "version": "0.0.1",
+    "publisher": "gkjohnson",
+    "license": "Apache-2.0",
+    "author": "Garrett Johnson <garrett.kjohnson@gmail.com>",
+    "engines": {
+        "vscode": "^1.17.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:urdf-preview.previewURDF",
+        "onLanguage:xml"
+    ],
+    "main": "./src/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "urdf-preview.previewURDF",
+                "title": "Preview URDF Model",
+                "icon": {
+                    "dark": "./resources/icons/google-material-3d_rotation-dark.svg",
+                    "light": "./resources/icons/google-material-3d_rotation-light.svg"
+                }
+            }
+        ],
+        "menus": {
+            "editor/title": [
+                {
+                    "command": "urdf-preview.previewURDF",
+                    "when": "urdfActive",
+                    "group": "navigation"
+                }
+            ],
+            "editor/title/context": [
+                {
+                    "command": "urdf-preview.previewURDF",
+                    "when": "urdfActive",
+                    "group": "urdf"
+                }
+            ]
+        },
+        "keybindings": [
+            {
+                "command": "urdf-preview.previewURDF",
+                "key": "alt+r",
+                "mac": "alt+r",
+                "when": "urdfActive"
+            }
+        ],
+        "languages": [
+            {
+                "id": "xml",
+                "extensions": [
+                    ".urdf"
+                ]
+            }
+        ]
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "eslint": "^4.11.0",
+        "urdf-loader": "^0.4.3"
+    },
+    "dependencies": {
+        "@types/mocha": "^2.2.42",
+        "@types/node": "^7.0.69",
+        "three": "^0.94.0",
+        "threejs-model-loader": "0.0.5",
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.21"
+    }
+}

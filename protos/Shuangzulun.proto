@@ -1,0 +1,547 @@
+#VRML_SIM R2023b utf8
+# license: Apache License 2.0
+# license url: http://www.apache.org/licenses/LICENSE-2.0
+# This is a proto file for Webots for the Shuangzulun
+# Extracted from: E:/Dock图标/强化学习课程备课资料/webots_project/双足轮式机器人/URDF_file\Shuangzulun\urdf\Shuangzulun.urdf
+
+PROTO Shuangzulun [
+  field  SFVec3f     translation     0 0 0
+  field  SFRotation  rotation        0 0 1 0
+  field  SFString    name            "Shuangzulun"  # Is `Robot.name`.
+  field  SFString    controller      "void"         # Is `Robot.controller`.
+  field  MFString    controllerArgs  []             # Is `Robot.controllerArgs`.
+  field  SFString    customData      ""             # Is `Robot.customData`.
+  field  SFBool      supervisor      TRUE          # Is `Robot.supervisor`.
+  field  SFBool      synchronization TRUE           # Is `Robot.synchronization`.
+  field  SFBool      selfCollision   FALSE          # Is `Robot.selfCollision`.
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    controller IS controller
+    controllerArgs IS controllerArgs
+    customData IS customData
+    supervisor IS supervisor
+    synchronization IS synchronization
+    selfCollision IS selfCollision
+    children [
+      Shape {
+        appearance DEF base_link_material PBRAppearance {
+          roughness 1.000000
+          metalness 0
+        }
+        geometry DEF base_link Mesh {
+          url "E:/Dock图标/强化学习课程备课资料/webots_project/双足轮式机器人/URDF_file/Shuangzulun/meshes/base_link.STL"
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis 1.000000 -0.000004 0.000000
+          anchor 0.066500 -0.030000 0.034000
+        }
+        device [
+          RotationalMotor {
+            name "L_F_1"
+            maxTorque 10000
+          }
+          PositionSensor {
+            name "L_F_1_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0.066500 -0.030000 0.034000
+          rotation 0.196169 0.196168 -0.960748 1.610833
+          children [
+            Shape {
+              appearance DEF L_F_1_material PBRAppearance {
+                roughness 1.000000
+                metalness 0
+              }
+              geometry DEF L_F_1 Mesh {
+                url "E:/Dock图标/强化学习课程备课资料/webots_project/双足轮式机器人/URDF_file/Shuangzulun/meshes/L_F_1.STL"
+              }
+            }
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis 0.000007 -1.000000 -0.000000
+                anchor 0.050000 0.006000 0.000000
+              }
+              device [
+                RotationalMotor {
+                  name "L_F_2"
+                  maxTorque 10000
+                }
+                PositionSensor {
+                  name "L_F_2_sensor"
+                }
+              ]
+              endPoint Solid {
+                translation 0.050000 0.006000 0.000000
+                rotation -0.555987 -0.000002 0.831191 3.141599
+                children [
+                  Shape {
+                    appearance DEF L_F_2_material PBRAppearance {
+                      roughness 1.000000
+                      metalness 0
+                    }
+                    geometry DEF L_F_2 Mesh {
+                      url "E:/Dock图标/强化学习课程备课资料/webots_project/双足轮式机器人/URDF_file/Shuangzulun/meshes/L_F_2.STL"
+                    }
+                  }
+                  HingeJoint {
+                    jointParameters HingeJointParameters {
+                      axis 0.000007 -1.000000 -0.000000
+                      anchor 0.105000 -0.005500 0.000000
+                    }
+                    device [
+                      RotationalMotor {
+                        name "L_F_lun"
+                        maxTorque 10000
+                      }
+                      PositionSensor {
+                        name "L_F_lun_sensor"
+                      }
+                    ]
+                    endPoint Solid {
+                      translation 0.105000 -0.005500 0.000000
+                      rotation -0.090869 -0.000000 0.995863 3.141600
+                      children [
+                        Shape {
+                          appearance DEF L_F_lun_material PBRAppearance {
+                            baseColor 0.298039 0.298039 0.298039
+                            roughness 1.000000
+                            metalness 0
+                          }
+                          geometry DEF L_F_lun Mesh {
+                            url "E:/Dock图标/强化学习课程备课资料/webots_project/双足轮式机器人/URDF_file/Shuangzulun/meshes/L_F_lun.STL"
+                          }
+                        }
+                      ]
+                      name "L_F_lun"
+                      boundingObject USE L_F_lun
+                      physics Physics {
+                        density -1
+                        mass 0.038235
+                        centerOfMass [ -0.000009 0.016880 -0.000010 ]
+                        inertiaMatrix [
+                          7.296900e-06 1.220531e-05 7.296482e-06
+                          -4.011914e-10 -2.143863e-09 -4.534005e-10
+                        ]
+                      }
+                    }
+                  }
+                ]
+                name "L_F_2"
+                boundingObject USE L_F_2
+                physics Physics {
+                  density -1
+                  mass 0.015270
+                  centerOfMass [ 0.057976 -0.002656 -0.000001 ]
+                  inertiaMatrix [
+                    7.683765e-07 2.010645e-05 1.940315e-05
+                    1.429612e-08 1.178802e-08 4.161363e-13
+                  ]
+                }
+              }
+            }
+          ]
+          name "L_F_1"
+          boundingObject USE L_F_1
+          physics Physics {
+            density -1
+            mass 0.010301
+            centerOfMass [ 0.020081 0.002438 0.000000 ]
+            inertiaMatrix [
+              7.466351e-07 5.015279e-06 4.311061e-06
+              1.906750e-08 4.764560e-22 1.240771e-23
+            ]
+          }
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis -1.000000 -0.000004 0.000000
+          anchor 0.072500 0.030000 0.034000
+        }
+        device [
+          RotationalMotor {
+            name "L_H_1"
+            maxTorque 10000
+          }
+          PositionSensor {
+            name "L_H_1_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0.072500 0.030000 0.034000
+          rotation -0.211572 0.211571 0.954188 1.617677
+          children [
+            Shape {
+              appearance DEF L_H_1_material PBRAppearance {
+                roughness 1.000000
+                metalness 0
+              }
+              geometry DEF L_H_1 Mesh {
+                url "E:/Dock图标/强化学习课程备课资料/webots_project/双足轮式机器人/URDF_file/Shuangzulun/meshes/L_H_1.STL"
+              }
+            }
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis 0.000007 -1.000000 -0.000000
+                anchor 0.050000 0.001000 0.000000
+              }
+              device [
+                RotationalMotor {
+                  name "L_H_2"
+                  maxTorque 10000
+                }
+                PositionSensor {
+                  name "L_H_2_sensor"
+                }
+              ]
+              endPoint Solid {
+                translation 0.050000 0.001000 0.000000
+                rotation -0.561502 -0.000002 0.827475 3.141599
+                children [
+                  Shape {
+                    appearance DEF L_H_2_material PBRAppearance {
+                      roughness 1.000000
+                      metalness 0
+                    }
+                    geometry DEF L_H_2 Mesh {
+                      url "E:/Dock图标/强化学习课程备课资料/webots_project/双足轮式机器人/URDF_file/Shuangzulun/meshes/L_H_2.STL"
+                    }
+                  }
+                  HingeJoint {
+                    jointParameters HingeJointParameters {
+                      axis 0.000000 1.000000 0.000000
+                      anchor 0.063622 -0.071500 0.042308
+                    }
+                    device [
+                      RotationalMotor {
+                        name "L_H_lun"
+                        maxTorque 10000
+                      }
+                      PositionSensor {
+                        name "L_H_lun_sensor"
+                      }
+                    ]
+                    endPoint Solid {
+                      translation 0.063622 -0.071500 0.042308
+                      rotation 0.000000 -1.000000 0.000000 1.350400
+                      children [
+                        Shape {
+                          appearance DEF L_H_lun_material PBRAppearance {
+                            baseColor 0.298039 0.298039 0.298039
+                            roughness 1.000000
+                            metalness 0
+                          }
+                          geometry DEF L_H_lun Mesh {
+                            url "E:/Dock图标/强化学习课程备课资料/webots_project/双足轮式机器人/URDF_file/Shuangzulun/meshes/L_H_lun.STL"
+                          }
+                        }
+                      ]
+                      name "L_H_lun"
+                      boundingObject USE L_H_lun
+                      physics Physics {
+                        density -1
+                        mass 0.038235
+                        centerOfMass [ -0.032246 0.094880 -0.049638 ]
+                        inertiaMatrix [
+                          7.296900e-06 1.220531e-05 7.296482e-06
+                          -4.011914e-10 -2.143863e-09 -4.534005e-10
+                        ]
+                      }
+                    }
+                  }
+                ]
+                name "L_H_2"
+                boundingObject USE L_H_2
+                physics Physics {
+                  density -1
+                  mass 0.015270
+                  centerOfMass [ 0.057976 -0.002656 -0.000001 ]
+                  inertiaMatrix [
+                    7.683765e-07 2.010645e-05 1.940315e-05
+                    1.429612e-08 1.178802e-08 4.161363e-13
+                  ]
+                }
+              }
+            }
+          ]
+          name "L_H_1"
+          boundingObject USE L_H_1
+          physics Physics {
+            density -1
+            mass 0.010301
+            centerOfMass [ 0.020081 -0.002562 0.000000 ]
+            inertiaMatrix [
+              7.466351e-07 5.015279e-06 4.311061e-06
+              1.906750e-08 4.235165e-22 -5.790264e-23
+            ]
+          }
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis 1.000000 -0.000004 0.000000
+          anchor -0.072500 -0.030000 0.034000
+        }
+        device [
+          RotationalMotor {
+            name "R_F_1"
+            maxTorque 10000
+          }
+          PositionSensor {
+            name "R_F_1_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation -0.072500 -0.030000 0.034000
+          rotation 0.196169 0.196168 -0.960748 1.610833
+          children [
+            Shape {
+              appearance DEF R_F_1_material PBRAppearance {
+                roughness 1.000000
+                metalness 0
+              }
+              geometry DEF R_F_1 Mesh {
+                url "E:/Dock图标/强化学习课程备课资料/webots_project/双足轮式机器人/URDF_file/Shuangzulun/meshes/R_F_1.STL"
+              }
+            }
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis -0.000007 -1.000000 0.000000
+                anchor 0.050000 0.001000 0.000000
+              }
+              device [
+                RotationalMotor {
+                  name "R_F_2"
+                  maxTorque 10000
+                }
+                PositionSensor {
+                  name "R_F_2_sensor"
+                }
+              ]
+              endPoint Solid {
+                translation 0.050000 0.001000 0.000000
+                rotation 0.555987 -0.000002 -0.831191 3.141599
+                children [
+                  Shape {
+                    appearance DEF R_F_2_material PBRAppearance {
+                      roughness 1.000000
+                      metalness 0
+                    }
+                    geometry DEF R_F_2 Mesh {
+                      url "E:/Dock图标/强化学习课程备课资料/webots_project/双足轮式机器人/URDF_file/Shuangzulun/meshes/R_F_2.STL"
+                    }
+                  }
+                  HingeJoint {
+                    jointParameters HingeJointParameters {
+                      axis 0.000004 -1.000000 -0.000006
+                      anchor 0.105000 0.006500 0.000000
+                    }
+                    device [
+                      RotationalMotor {
+                        name "R_F_lun"
+                        maxTorque 10000
+                      }
+                      PositionSensor {
+                        name "R_F_lun_sensor"
+                      }
+                    ]
+                    endPoint Solid {
+                      translation 0.105000 0.006500 0.000000
+                      rotation 0.968112 0.000001 0.250518 3.141600
+                      children [
+                        Shape {
+                          appearance DEF R_F_lun_material PBRAppearance {
+                            baseColor 0.298039 0.298039 0.298039
+                            roughness 1.000000
+                            metalness 0
+                          }
+                          geometry DEF R_F_lun Mesh {
+                            url "E:/Dock图标/强化学习课程备课资料/webots_project/双足轮式机器人/URDF_file/Shuangzulun/meshes/R_F_lun.STL"
+                          }
+                        }
+                      ]
+                      name "R_F_lun"
+                      boundingObject USE R_F_lun
+                      physics Physics {
+                        density -1
+                        mass 0.038235
+                        centerOfMass [ 0.000002 -0.016880 0.000014 ]
+                        inertiaMatrix [
+                          7.298796e-06 1.220531e-05 7.294586e-06
+                          -7.220355e-11 -4.578361e-10 -6.010933e-10
+                        ]
+                      }
+                    }
+                  }
+                ]
+                name "R_F_2"
+                boundingObject USE R_F_2
+                physics Physics {
+                  density -1
+                  mass 0.015270
+                  centerOfMass [ 0.057976 -0.002656 -0.000001 ]
+                  inertiaMatrix [
+                    7.683765e-07 2.010645e-05 1.940315e-05
+                    1.429612e-08 1.178802e-08 4.161363e-13
+                  ]
+                }
+              }
+            }
+          ]
+          name "R_F_1"
+          boundingObject USE R_F_1
+          physics Physics {
+            density -1
+            mass 0.010301
+            centerOfMass [ 0.020081 -0.002562 -0.000000 ]
+            inertiaMatrix [
+              7.466351e-07 5.015279e-06 4.311061e-06
+              1.906750e-08 -6.882143e-22 -4.380296e-22
+            ]
+          }
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis -1.000000 -0.000004 0.000000
+          anchor -0.066500 0.030000 0.034000
+        }
+        device [
+          RotationalMotor {
+            name "R_H_1"
+            maxTorque 10000
+          }
+          PositionSensor {
+            name "R_H_1_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation -0.066500 0.030000 0.034000
+          rotation -0.211572 0.211571 0.954188 1.617677
+          children [
+            Shape {
+              appearance DEF R_H_1_material PBRAppearance {
+                roughness 1.000000
+                metalness 0
+              }
+              geometry DEF R_H_1 Mesh {
+                url "E:/Dock图标/强化学习课程备课资料/webots_project/双足轮式机器人/URDF_file/Shuangzulun/meshes/R_H_1.STL"
+              }
+            }
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis 0.000007 -1.000000 -0.000000
+                anchor 0.050000 0.006000 0.000000
+              }
+              device [
+                RotationalMotor {
+                  name "R_H_2"
+                  maxTorque 10000
+                }
+                PositionSensor {
+                  name "R_H_2_sensor"
+                }
+              ]
+              endPoint Solid {
+                translation 0.050000 0.006000 0.000000
+                rotation -0.561502 -0.000002 0.827475 3.141599
+                children [
+                  Shape {
+                    appearance DEF R_H_2_material PBRAppearance {
+                      roughness 1.000000
+                      metalness 0
+                    }
+                    geometry DEF R_H_2 Mesh {
+                      url "E:/Dock图标/强化学习课程备课资料/webots_project/双足轮式机器人/URDF_file/Shuangzulun/meshes/R_H_2.STL"
+                    }
+                  }
+                  HingeJoint {
+                    jointParameters HingeJointParameters {
+                      axis -0.000001 1.000000 -0.000004
+                      anchor 0.063622 0.072500 0.042308
+                    }
+                    device [
+                      RotationalMotor {
+                        name "R_H_lun"
+                        maxTorque 10000
+                      }
+                      PositionSensor {
+                        name "R_H_lun_sensor"
+                      }
+                    ]
+                    endPoint Solid {
+                      translation 0.063622 0.072500 0.042308
+                      rotation -0.000002 1.000000 -0.000002 2.115693
+                      children [
+                        Shape {
+                          appearance DEF R_H_lun_material PBRAppearance {
+                            baseColor 0.298039 0.298039 0.298039
+                            roughness 1.000000
+                            metalness 0
+                          }
+                          geometry DEF R_H_lun Mesh {
+                            url "E:/Dock图标/强化学习课程备课资料/webots_project/双足轮式机器人/URDF_file/Shuangzulun/meshes/R_H_lun.STL"
+                          }
+                        }
+                      ]
+                      name "R_H_lun"
+                      boundingObject USE R_H_lun
+                      physics Physics {
+                        density -1
+                        mass 0.038235
+                        centerOfMass [ 0.014736 -0.094880 0.057329 ]
+                        inertiaMatrix [
+                          7.298796e-06 1.220531e-05 7.294586e-06
+                          -7.220355e-11 -4.578361e-10 -6.010933e-10
+                        ]
+                      }
+                    }
+                  }
+                ]
+                name "R_H_2"
+                boundingObject USE R_H_2
+                physics Physics {
+                  density -1
+                  mass 0.015270
+                  centerOfMass [ 0.057976 -0.002656 -0.000001 ]
+                  inertiaMatrix [
+                    7.683765e-07 2.010645e-05 1.940315e-05
+                    1.429612e-08 1.178802e-08 4.161363e-13
+                  ]
+                }
+              }
+            }
+          ]
+          name "R_H_1"
+          boundingObject USE R_H_1
+          physics Physics {
+            density -1
+            mass 0.010301
+            centerOfMass [ 0.020081 0.002438 0.000000 ]
+            inertiaMatrix [
+              7.466351e-07 5.015279e-06 4.311061e-06
+              1.906750e-08 1.852885e-22 9.174180e-23
+            ]
+          }
+        }
+      }
+    ]
+    name IS name
+    boundingObject USE base_link
+    physics Physics {
+      density -1
+      mass 0.356780
+      centerOfMass [ -0.000002 0.024269 -0.000032 ]
+      inertiaMatrix [
+        2.294577e-04 2.899671e-04 1.406359e-04
+        1.562276e-09 1.107582e-09 5.549703e-08
+      ]
+    }
+  }
+}

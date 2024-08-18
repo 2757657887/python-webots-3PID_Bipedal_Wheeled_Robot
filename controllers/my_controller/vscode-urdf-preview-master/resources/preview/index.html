@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>URDF Viewer</title>
+        <script src="{{base}}/node_modules/three/build/three.min.js"></script>
+        <script src="{{base}}/node_modules/three/examples/js/libs/inflate.min.js"></script>
+        <script src="{{base}}/node_modules/three/examples/js/loaders/3MFLoader.js"></script>
+        <script src="{{base}}/node_modules/three/examples/js/loaders/AMFLoader.js"></script>
+        <script src="{{base}}/node_modules/three/examples/js/loaders/AssimpLoader.js"></script>
+        <script src="{{base}}/node_modules/three/examples/js/loaders/AssimpJSONLoader.js"></script>
+        <script src="{{base}}/node_modules/three/examples/js/loaders/ColladaLoader.js"></script>
+        <script src="{{base}}/node_modules/three/examples/js/loaders/FBXLoader.js"></script>
+        <script src="{{base}}/node_modules/three/examples/js/loaders/GLTFLoader.js"></script>
+        <script src="{{base}}/node_modules/three/examples/js/loaders/KMZLoader.js"></script>
+        <script src="{{base}}/node_modules/three/examples/js/loaders/OBJLoader.js"></script>
+        <script src="{{base}}/node_modules/three/examples/js/loaders/PLYLoader.js"></script>
+        <script src="{{base}}/node_modules/three/examples/js/loaders/PCDLoader.js"></script>
+        <script src="{{base}}/node_modules/three/examples/js/loaders/STLLoader.js"></script>
+        <script src="{{base}}/node_modules/three/examples/js/loaders/VTKLoader.js"></script>
+        <script src="{{base}}/node_modules/three/examples/js/controls/OrbitControls.js"></script>
+        <script src="{{base}}/node_modules/threejs-model-loader/ModelLoader.js"></script>
+
+        <script src="{{base}}/node_modules/urdf-loader/URDFLoader.js"></script>
+        <script src="{{base}}/node_modules/urdf-loader/urdf-viewer-element.js"></script>
+        <script src="{{base}}/node_modules/urdf-loader/urdf-manipulator-element.js"></script>
+
+        <link href="{{base}}/node_modules/urdf-loader/example/styles.css" rel="stylesheet" />
+
+        <script type="urdf-content">{{urdf-content}}</script>
+        <script>
+            window.__baseURL = `{{base}}`;
+            window.__workspaceURL = `{{workspace}}`;
+            window.__files = {{files}};
+        </script>
+
+        <style>
+            *, body {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                overflow: hidden;
+                animation: none;
+            }
+
+            urdf-viewer {
+                display: block;
+                width: 100vw;
+                height: 100vh;
+            }
+
+            #do-animate, #urdf-options, #ignore-joint-limits {
+                display: none;
+            }
+
+            #controls {
+                margin-top: 0;
+
+                /*
+                    we're using the example code from the
+                    urdf-loader repo, which hides the controls
+                    when the screen is too small, so undo that
+                    here
+                */
+                display: flex !important;
+            }
+
+            #controls:not(.hidden) #toggle-controls {
+                border-bottom: 1px solid white;
+            }
+
+            #controls #toggle-controls {
+                border-top: none;
+                padding-bottom: 3px;
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div id="menu">
+            <ul id="urdf-options"></ul>
+
+            <div id="controls" class="hidden">
+                <div id="toggle-controls"></div>
+                <div id="ignore-joint-limits" class="toggle">Ignore Joint Limits</div>
+                <div id="do-animate" class="toggle">Animate Joints</div>
+                <label>
+                    Up Axis
+                    <select id="up-select">
+                        <option value="+X">+X</option>
+                        <option value="-X">-X</option>
+                        <option value="+Y">+Y</option>
+                        <option value="-Y">-Y</option>
+                        <option value="+Z" selected>+Z</option>
+                        <option value="-Z">-Z</option>
+                    </select>
+                </label>
+                <ul></ul>
+            </div>
+        </div>
+
+        <!--
+            With anti-aliasing is enabled the renderer seems to suffer from a ghosting
+            effect in vscode if the frame is not redrawn every time
+
+            This code can be used to disable anti-aliasing instead
+        -->
+        <script>
+            THREE.WebGLRenderer = class extends THREE.WebGLRenderer {
+                constructor(options) {
+                    delete options.antialias;
+                    super(options);
+                }
+            }
+        </script>
+        <urdf-viewer display-shadow up="+Z" no-auto-recenter></urdf-viewer>
+
+        <script>customElements.define('urdf-viewer', URDFManipulator)</script>
+        <script src="{{base}}/node_modules/urdf-loader/example/index.js"></script>
+        <script src="{{base}}/resources/preview/index.js"></script>
+    </body>
+</html>
